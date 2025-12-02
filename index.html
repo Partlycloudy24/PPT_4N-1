@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTT 4n+1 Gallery</title>
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --accent: #00d2ff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #111;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Dynamic Blurred Background */
+        .background-blur {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(40px) brightness(0.4);
+            z-index: -1;
+            transition: background-image 0.6s ease-in-out;
+        }
+
+        /* Main Glass Container */
+        .gallery-wrapper {
+            position: relative;
+            width: 900px;
+            max-width: 90%;
+            aspect-ratio: 16/9;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .slide img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            /* Prevent dragging image */
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        /* Navigation Buttons */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            scale: 1.1;
+        }
+
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        /* Pagination Dots */
+        .dots-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            background: rgba(0,0,0,0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Background Layer -->
+    <div class="background-blur" id="bg-blur"></div>
+
+    <div class="gallery-wrapper">
+        <button class="nav-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+        
+        <div class="slider" id="slider">
+            <!-- 
+               GITHUB IMAGES NOTE:
+               We use relative paths 'images/picX.png'. 
+               This works perfectly when this HTML file is in the root of the repo.
+            -->
+            <div class="slide"><img src="images/pic1.png" alt="Palia Timer Preview 1"></div>
+            <div class="slide"><img src="images/pic2.png" alt="Palia Timer Preview 2"></div>
+            <div class="slide"><img src="images/pic3.png" alt="Palia Timer Preview 3"></div>
+            <div class="slide"><img src="images/pic4.png" alt="Palia Timer Preview 4"></div>
+            <div class="slide"><img src="images/pic5.png" alt="Palia Timer Preview 5"></div>
+        </div>
+
+        <button class="nav-btn next" onclick="moveSlide(1)">&#10095;</button>
+
+        <div class="dots-container" id="dots"></div>
+    </div>
+
+    <script>
+        // --- CONFIGURATION ---
+        // List images here for the background blur effect
+        const images = [
+            'images/pic1.png',
+            'images/pic2.png',
+            'images/pic3.png',
+            'images/pic4.png',
+            'images/pic5.png'
+        ];
+
+        let currentIndex = 0;
+        const totalSlides = images.length;
+        const slider = document.getElementById('slider');
+        const bgBlur = document.getElementById('bg-blur');
+        const dotsContainer = document.getElementById('dots');
+
+        // Initialize
+        function init() {
+            // Create dots
+            images.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.onclick = () => jumpToSlide(idx);
+                dotsContainer.appendChild(dot);
+            });
+            updateUI();
+        }
+
+        function updateUI() {
+            // 1. Move Slider
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // 2. Update Background
+            bgBlur.style.backgroundImage = `url('${images[currentIndex]}')`;
+
+            // 3. Update Dots
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((d, idx) => {
+                d.classList.toggle('active', idx === currentIndex);
+            });
+        }
+
+        function moveSlide(direction) {
+            currentIndex += direction;
+            
+            // Loop functionality
+            if (currentIndex < 0) currentIndex = totalSlides - 1;
+            if (currentIndex >= totalSlides) currentIndex = 0;
+
+            updateUI();
+        }
+
+        function jumpToSlide(index) {
+            currentIndex = index;
+            updateUI();
+        }
+
+        // Keyboard Support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') moveSlide(-1);
+            if (e.key === 'ArrowRight') moveSlide(1);
+        });
+
+        // Run
+        init();
+    </script>
+
+</body>
+</html>

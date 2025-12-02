@@ -1,4 +1,5 @@
 # PTT 4n+1 (Palia Tower Timer)
+## $\color{red}{\text{Warning! This is beta, nothing is guaranteed to work!}}$
 
 PTT 4n+1 is a desktop overlay utility designed for **Palia**. It synchronizes with the game server time to automatically calculate and display the next **"4n + 1"** interval. This helps with start timing for advanced tower running.
 
@@ -108,6 +109,7 @@ This project is licensed under the [MIT License](https://github.com/Partlycloudy
 **Disclaimer**
 
 This software is an unofficial fan-made utility. It is not endorsed by, affiliated with, sponsored by, or specifically approved by Singularity 6 Corporation. Palia is a trademark of Singularity 6 Corporation. All rights reserved. This tool functions strictly as a system clock overlay and does not interact with game files or memory.
+
 
 
 

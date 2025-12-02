@@ -1,9 +1,6 @@
 # PTT 4n+1 (Palia Tower Timer)
 
-**Developer:** Clouay
-**Release Year:** 2025
-
-PTT 4n+1 is a desktop overlay utility designed for **Palia**. It synchronizes with the game server time to automatically calculate and display the next **"4n + 1"** interval.
+PTT 4n+1 is a desktop overlay utility designed for **Palia**. It synchronizes with the game server time to automatically calculate and display the next **"4n + 1"** interval. This helps with start timing for advanced tower running.
 
 ![Platform](https://img.shields.io/badge/Platform-Windows-win)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
@@ -19,8 +16,7 @@ PTT 4n+1 is a desktop overlay utility designed for **Palia**. It synchronizes wi
 *   **Customization:**
     *   **Typography:** Integrated search engine for all system-installed fonts.
     *   **Color Palette:** Advanced Spectrum Picker for text and background customization.
-    *   **Icons:** Native support for loading custom `.ico` files.
-    *   **Theming:** toggle between Dark, Light, and System modes.
+    *   **Icons:** Native support for loading custom `.ico and .png` files.
 
 ## Installation
 
@@ -97,8 +93,9 @@ The application is set to "Always on Top" by default. If it obstructs game UI, r
 ## License and Legal
 
 **Copyright © 2025 Clouay.**
-This project is licensed under the [MIT License](LICENSE.txt).
+This project is licensed under the [MIT License](https://github.com/Partlycloudy24/PTT_4n-1/blob/main/LICENSE).
 
 **Disclaimer**
 
 This software is an unofficial fan-made utility. It is not endorsed by, affiliated with, sponsored by, or specifically approved by Singularity 6 Corporation. Palia is a trademark of Singularity 6 Corporation. All rights reserved. This tool functions strictly as a system clock overlay and does not interact with game files or memory.
+

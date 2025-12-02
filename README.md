@@ -77,7 +77,7 @@ Right-click the timer and select **Settings** to access the configuration dashbo
 | **Invisible Background** | Hides the background container for a transparent look. |
 | **Text Outline** | Adds a high-contrast stroke to text (Recommended for Invisible Mode). |
 | **Lock Position** | Disables window dragging to prevent accidental movement. |
-| **Custom Icon** | Upload a custom `.ico` file to replace the application window icon. |
+| **Custom Icon** | Upload a custom `.ico` or `.png` file to replace the application window icon. |
 
 ## Troubleshooting
 
@@ -98,4 +98,5 @@ This project is licensed under the [MIT License](https://github.com/Partlycloudy
 **Disclaimer**
 
 This software is an unofficial fan-made utility. It is not endorsed by, affiliated with, sponsored by, or specifically approved by Singularity 6 Corporation. Palia is a trademark of Singularity 6 Corporation. All rights reserved. This tool functions strictly as a system clock overlay and does not interact with game files or memory.
+
 

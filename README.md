@@ -41,7 +41,7 @@ For developers or users who prefer running the application via a Python environm
 **Step 1: Clone Repository**
 Download the source code or clone via git:
 ```bash
-git clone https://github.com/Clouay/PTT-4n1.git
+git clone https://github.com/Partlycloudy24/PPT_4N-1.git
 cd PTT-4n1
 ```
 
@@ -100,4 +100,5 @@ The application is set to "Always on Top" by default. If it obstructs game UI, r
 This project is licensed under the [MIT License](LICENSE.txt).
 
 **Disclaimer**
+
 This software is an unofficial fan-made utility. It is not endorsed by, affiliated with, sponsored by, or specifically approved by Singularity 6 Corporation. Palia is a trademark of Singularity 6 Corporation. All rights reserved. This tool functions strictly as a system clock overlay and does not interact with game files or memory.

@@ -17,6 +17,16 @@ PTT 4n+1 is a desktop overlay utility designed for **Palia**. It synchronizes wi
     *   **Typography:** Integrated search engine for all system-installed fonts.
     *   **Color Palette:** Advanced Spectrum Picker for text and background customization.
     *   **Icons:** Native support for loading custom `.ico` and `.png` files.
+ 
+## Gallery
+
+<p align="center">
+  Click the image below to view the interactive gallery.
+  <br><br>
+  <a href="https://partlycloudy24.github.io/PPT_4N-1/">
+    <img src="images/NTFPxCpupF2fjVDirsRcnS.png" alt="Click to View Interactive Gallery" width="90%" style="border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+  </a>
+</p>
 
 ## Installation
 
@@ -98,6 +108,7 @@ This project is licensed under the [MIT License](https://github.com/Partlycloudy
 **Disclaimer**
 
 This software is an unofficial fan-made utility. It is not endorsed by, affiliated with, sponsored by, or specifically approved by Singularity 6 Corporation. Palia is a trademark of Singularity 6 Corporation. All rights reserved. This tool functions strictly as a system clock overlay and does not interact with game files or memory.
+
 
 
 
